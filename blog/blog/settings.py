@@ -92,7 +92,7 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -124,6 +124,7 @@ DEBUG = False
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 SITE_ID = 1
+SECRET_KEY = 'unbreakable18885@5jSD9l'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -143,15 +144,15 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 DATABASES = {
     "default": {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         # DB name or path to database file if using sqlite3.
-        "NAME": "",
+        "NAME": "vcblogdb",
         # Not used with sqlite3.
-        "USER": "",
+        "USER": "vcblogadmin",
         # Not used with sqlite3.
-        "PASSWORD": "",
+        "PASSWORD": "vcblog123",
         # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": "",
+        "HOST": "localhost",
         # Set to empty string for default. Not used with sqlite3.
         "PORT": "",
     }
