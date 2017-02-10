@@ -1,0 +1,12 @@
+<ul>
+
+{% for post in posts %}
+	<li class="li-banner" style="height:230px;">
+		<div class="unslider-innerdiv" style="background-image:url(http://{{ current_site }}{{ MEDIA_URL }}{{ post.featured_image }});">
+			<div class="banner-title"> <h1>{{ post.title }}</h1> </div>
+			<div class="banner-subtitle"><h5> {{ post.description }} <h5></div>
+		</div>
+	</li>
+{% endfor %}
+
+</ul>

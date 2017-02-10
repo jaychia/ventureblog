@@ -1,0 +1,55 @@
+{% load staticfiles %}
+
+<div class="banner" id="js-banner">
+</div>
+
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="{% static "js/unslider.js" %}"></script>
+<script>
+function commitSlider() {
+  var slider = $('.banner').unslider();
+  slider.data('unslider').start();
+}
+
+function buildBanner(data) {
+  // Build the banner
+  var banner = $("#js-banner");
+  banner.append(data);
+  commitSlider();
+  addArrows(banner);
+}
+
+function addArrows(e) {
+  var next = $('<button class="unslider-arrow prev">&#8249;</button>');
+  var prev = $('<button class="unslider-arrow next">&#8250;</button>');
+  console.log(next);
+  next.click(function(ev) {
+    console.log('ckicked');
+      e.data('unslider').next();
+    }
+  );
+  prev.click(function(ev) {
+      e.data('unslider').prev()
+    }
+  );
+  e.append(next);
+  e.append(prev);
+}
+
+function defaultBanner() {
+  // Build default banner
+}
+
+jQuery(document).ready(function($) {
+      // Send ajax call to get objects
+      // On success, build the banner with data and then commit Slider
+      // On failure, display some default image
+      $.ajax({
+        url: "{% url "scrolling_banner" %}",
+        success: buildBanner,
+        error: function(data) {console.log(data);},
+      });
+    });
+</script>
+<link rel="stylesheet" href="{% static "css/unslider.css" %}">
+<link rel="stylesheet" href="{% static "css/unslider-dots.css" %}">
