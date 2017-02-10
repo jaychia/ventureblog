@@ -49,7 +49,7 @@
     cursor: pointer;
     border-radius: 50%;
     background: white;
-    opacity: 0.5;
+    opacity: 0.2;
     border-width: 0;
     width:30px;
     height:30px;
@@ -57,7 +57,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .unslider-arrow:hover {
-    opacity: 0.8;
+    opacity: 0.3;
 }
 .unslider-arrow:focus{
     outline:0px;
