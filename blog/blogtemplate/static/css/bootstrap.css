@@ -18,7 +18,8 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
+  font-family: 'Lora', 'Times New Roman', serif;
+  font-size: 20px;
 }
 article,
 aside,
@@ -1089,7 +1090,7 @@ body {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 16px;
   line-height: 1.42857143;
-  color: #333333;
+  color: #424B54;
   background-color: #fafafa;
 }
 input,
@@ -1101,13 +1102,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #4582ec;
+  color: #074F57;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #134fb8;
-  text-decoration: underline;
+  color: #477F60;
 }
 a:focus {
   outline: 5px auto -webkit-focus-ring-color;

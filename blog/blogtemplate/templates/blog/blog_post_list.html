@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags extra_tags %}
 
 {% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Blog" %}{% endif %}{% endblock %}
 
@@ -41,6 +41,10 @@
 {% endif %}
 {% endblock %}
 
+{% block before_content %}
+        {% include "generic/includes/scrolling_banner.html" %}
+{% endblock %}
+
 {% block main %}
 
 {% if tag or category or year or month or author %}
@@ -71,7 +75,6 @@
     {% endif %}
 {% endif %}
 
-{% include "generic/includes/scrolling_banner.html" %}
 
 {% for blog_post in blog_posts.object_list %}
 <div class="blogpostlist_item">
@@ -85,19 +88,21 @@
 {% block blog_post_list_post_metainfo %}
 {% editable blog_post.publish_date %}
 <h6 class="post-meta">
-    {% trans "Posted by" %}:
     {% with blog_post.user as author %}
-    <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
+    <a href="{% url "blog_post_list_author" author %}"> <img class="author" src="https://thebenclark.files.wordpress.com/2014/03/facebook-default-no-profile-pic.jpg" height="42" width="42"></img>&nbsp;&nbsp;{{ author.get_full_name|default:author.username }}</a>
     {% endwith %}
     {% with blog_post.categories.all as categories %}
     {% if categories %}
+    &middot;
     {% trans "in" %}
     {% for category in categories %}
     <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
     {% endfor %}
+    &middot;
     {% endif %}
     {% endwith %}
-    {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
+    &middot;
+    {% blocktrans with sometime=blog_post.publish_date|timesince|upto:',' %}{{ sometime }} ago{% endblocktrans %}
 </h6>
 {% endeditable %}
 {% endblock %}
