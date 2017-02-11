@@ -87,8 +87,10 @@
 .banner-title{
     text-shadow: 2px 2px rgba(20, 20, 20, 0.3);
     margin-left: 10%;
+    color: rgba(256, 256, 256, 0.95);
 }
 .banner-subtitle{
     text-shadow: 2px 2px rgba(20, 20, 20, 0.1);
     margin-left: 10%;
+    color: rgba(256, 256, 256, 0.95);
 }

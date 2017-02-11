@@ -1,4 +1,4 @@
-{% load mezzanine_tags %}
+{% load mezzanine_tags staticfiles %}
 
 {% editable_loader %}
 
@@ -13,3 +13,4 @@ ga('create', '{{ settings.GOOGLE_ANALYTICS_ID }}', 'auto');
 ga('send', 'pageview');
 </script>
 {% endif %}
+<script src="{% static "js/scrollhide.js" %}"></script>

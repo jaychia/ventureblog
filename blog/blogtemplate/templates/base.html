@@ -49,13 +49,7 @@
 
 <body id="{% block body_id %}body{% endblock %}">
 
-<div id="top-banner">
-    {% block banner %}
-        <!-- Individual pages to implement their own img here -->
-    {% endblock %}
-</div>
-
-<div class="navbar navbar-default navbar-static-top" role="navigation">
+<div id="js-navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
 <div class="container">
 <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -71,10 +65,12 @@
 </div>
 <div class="navbar-collapse collapse">
     {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
-    {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
+    <!-- {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%} -->
 </div>
 </div>
 </div>
+
+{% block bigpic %}{% endblock %}
 
 <div class="container">
 
@@ -91,7 +87,9 @@
 {% endif %}
 {% endnevercache %}
 
-{% block before_content %}<br>{% endblock %}
+{% block before_content %}
+    <div style="height:80px; width:100%;"></div>
+{% endblock %}
 
 <!-- Don't want the title either>
 <!-- <h1>{% block title %}{% endblock %}</h1>>
@@ -114,25 +112,9 @@
     {% endblock %}
 </div> -->
 
-<div class="col-md-9 middle">
+<div class="col-xs-12 middle">
     {% block main %}{% endblock %}
-</div>
-
-<div class="col-md-3 right">
-    <!-- Commented out, not used>
-<!--     {% nevercache %}
-    {% include "includes/language_selector.html" %}
-    {% include "includes/user_panel.html" %}
-    {% endnevercache %} -->
-    <div class="panel panel-default">
-    <div class="panel-body">
-    {% block right_panel %}
-    {% ifinstalled mezzanine.twitter %}
-    {% include "twitter/tweets.html" %}
-    {% endifinstalled %}
-    {% endblock %}
-    </div>
-    </div>
+    {% block right_side_bar %}{% endblock %}
 </div>
 
 </div>

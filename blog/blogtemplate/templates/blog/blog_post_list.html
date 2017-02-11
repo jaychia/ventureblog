@@ -42,11 +42,12 @@
 {% endblock %}
 
 {% block before_content %}
+    {{ block.super }}
         {% include "generic/includes/scrolling_banner.html" %}
 {% endblock %}
 
 {% block main %}
-
+<div class="col-md-9">
 {% if tag or category or year or month or author %}
     {% block blog_post_list_filterinfo %}
     <p>
@@ -77,7 +78,7 @@
 
 
 {% for blog_post in blog_posts.object_list %}
-<div class="blogpostlist_item">
+<div class="blogpostlist_item hoverpop">
 {% block blog_post_list_post_title %}
 {% editable blog_post.title %}
 <h2>
@@ -162,9 +163,20 @@
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
 {% include "generic/includes/disqus_counts.html" %}
 {% endif %}
+</div>
 
-{% endblock %}
+<div class="col-md-3 right hoverpop">
+    <!-- Commented out, not used>
+<!--     {% nevercache %}
+    {% include "includes/language_selector.html" %}
+    {% include "includes/user_panel.html" %}
+    {% endnevercache %} -->
+    {% block right_panel %}
+    {% ifinstalled mezzanine.twitter %}
+    {% include "twitter/tweets.html" %}
+    {% endifinstalled %}
+    {% include "blog/includes/filter_panel.html" %}
+    {% endblock %}
+</div>
 
-{% block right_panel %}
-{% include "blog/includes/filter_panel.html" %}
 {% endblock %}
