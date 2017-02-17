@@ -1,5 +1,5 @@
 {% extends "blog/blog_post_list.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags extra_tags %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags extra_tags staticfiles %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
@@ -23,7 +23,7 @@
     {% editable blog_post.publish_date %}
     <h6 class="post-meta authordetails">
         {% with blog_post.user as author %}
-        <a href="{% url "blog_post_list_author" author %}"><img class="author" src="https://thebenclark.files.wordpress.com/2014/03/facebook-default-no-profile-pic.jpg" height="42" width="42"></img>&nbsp;&nbsp;{{ author.get_full_name|default:author.username }}</a>
+        <a href="{% url "blog_post_list_author" author %}"><div class='author-container'> <img class="author" src="{{ MEDIA_URL }}{{ profilepics|get_item:author.username }}"></img></div>&nbsp;&nbsp;{{ author.get_full_name|default:author.username }}</a>
         {% endwith %}
         &middot;
         {% blocktrans with sometime=blog_post.publish_date|timesince|upto:"," %}{{ sometime }} ago{% endblocktrans %}
@@ -102,8 +102,8 @@
 
 {% block blog_post_detail_sharebuttons %}
 {% set_short_url_for blog_post %}
-<a class="btn btn-sm share-twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ blog_post.short_url|urlencode }}&amp;text={{ blog_post.title|urlencode }}">{% trans "Share on Twitter" %}</a>
-<a class="btn btn-sm share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">{% trans "Share on Facebook" %}</a>
+<a class="square-sm btn btn-sm share-twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ blog_post.short_url|urlencode }}&amp;text={{ blog_post.title|urlencode }}"><img src="{% static 'img/twitter.png' %}" class="fit-in"></img></a>
+<a class="square-sm btn btn-sm share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"><img src="{% static 'img/facebook.png' %}" class="fit-in"></img></a>
 {% endblock %}
 
 {% block blog_post_previous_next %}

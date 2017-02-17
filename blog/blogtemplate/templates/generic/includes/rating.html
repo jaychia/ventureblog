@@ -1,0 +1,42 @@
+{% load mezzanine_tags rating_tags i18n %}
+
+<!-- <span id="rating-{{ rating_object.id }}">
+    {% if rating_average %}
+    {% trans "Current rating" %}: {{ rating_average|floatformat }}
+    {% else %}
+    {% trans "Currently unrated" %}
+    {% endif %}
+</span>
+
+{% if not rated or request.user.is_authenticated %}
+<form class="form-inline" role="form" method="post" action="{% url "rating" %}">
+    {% nevercache %}
+    {% csrf_token %}
+    {% endnevercache %}
+    <ul class="radio radio-inline">{{ rating_form.as_ul }}</ul>
+    <input type="submit" class="btn btn-default btn-sm" value="{% trans "Rate" %}"
+        onclick="return $(this.form).find('input:checked').length == 1;">
+</form>
+{% endif %} -->
+
+<!-- Include like count here -->
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+{% if not rated or request.user.is_authenticated %}
+<form class="form-inline" role="form" method="post" action="{% url "rating" %}">
+    {% nevercache %}
+    {% csrf_token %}
+    {% endnevercache %}
+    <input type="hidden" id="id_value_0" name="value" type="radio" value="1" checked>
+    <input type="submit" class="btn btn-default heart-submit" value="&hearts;" onclick="return 1;">
+</form>
+{% else %}
+<i class="fa fa-heart-o"></i>
+{% endif %}
+
+<span id="rating-{{ rating_object.id }}">
+    {% if rating_count %}
+    {{ rating_count }}
+    {% else %}
+    0
+    {% endif %}
+</span>

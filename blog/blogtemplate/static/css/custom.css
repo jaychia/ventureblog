@@ -23,15 +23,19 @@ body {
   padding-top: 0px;
 }
 .author {
-  display: inline-block;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+  width:100%;
   background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background-position:center center;
+  background-size:cover;
 }
-
+.author-container {
+  display: inline-block;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  overflow:hidden;
+    vertical-align: middle;
+}
 .blog-entry-pretty{
 	margin-top: 100px;
 	margin-bottom: 80px;
@@ -74,4 +78,31 @@ color: #000000;
 }
 .nav-up {
   top: -80px;
+}
+.hidden-squished {
+	width:0px;
+}
+.searchbutton {
+	float:right;
+	margin-top: 2%;
+	margin-right: 10%;
+}
+.v-center {
+	vertical-align:middle;
+	display:block;
+}
+.fit-in {
+	height:20px;
+}
+.square-sm {
+	width:45px;
+}
+.share-facebook {
+  background-color: rgba(44,64,142,1.0);
+}
+.share-twitter {
+  background-color: rgba(0,153,236,1.0);
+}
+.heart-submit {
+	font-family: 'FontAwesome' YourFont;
 }
