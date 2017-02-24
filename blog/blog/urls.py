@@ -28,6 +28,8 @@ if settings.USE_MODELTRANSLATION:
         url('^i18n/$', set_language, name='set_language'),
     ]
 
+_slash = "/" if settings.APPEND_SLASH else ""
+
 urlpatterns += [
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
@@ -72,6 +74,27 @@ urlpatterns += [
     url("banner", blog_views.scrolling_banner, name="scrolling_banner"),
     url(r"rating/like/(?P<id>.*)", blog_views.like, name="ratinglike"),
     url(r"rating/dislike/(?P<id>.*)", blog_views.dislike, name="ratingdislike"),
+
+    url("^tag/(?P<tag>.*)%s$" % _slash,
+        blog_views.blog_post_list, name="blog_post_list_tag"),
+    url("^category/(?P<category>.*)%s$" % _slash,
+        blog_views.blog_post_list, name="blog_post_list_category"),
+    url("^author/(?P<username>.*)%s$" % _slash,
+        blog_views.blog_post_list, name="blog_post_list_author"),
+    url("^archive/(?P<year>\d{4})/(?P<month>\d{1,2})%s$" % _slash,
+        blog_views.blog_post_list, name="blog_post_list_month"),
+    url("^archive/(?P<year>\d{4})%s$" % _slash,
+        blog_views.blog_post_list, name="blog_post_list_year"),
+    url("^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/"
+        "(?P<slug>.*)%s$" % _slash,
+        blog_views.blog_post_detail, name="blog_post_detail_day"),
+    url("^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<slug>.*)%s$" % _slash,
+        blog_views.blog_post_detail, name="blog_post_detail_month"),
+    url("^(?P<year>\d{4})/(?P<slug>.*)%s$" % _slash,
+        blog_views.blog_post_detail, name="blog_post_detail_year"),
+    url("^(?P<slug>.*)%s$" % _slash,
+        blog_views.blog_post_detail, name="blog_post_detail"),
+    url("^$", blog_views.blog_post_list, name="blog_post_list"),
 
     # MEZZANINE'S URLS
     # ----------------
