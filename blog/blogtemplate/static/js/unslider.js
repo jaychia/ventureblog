@@ -77,7 +77,7 @@
 			//  "fade": each slide fades in to each other
 			//  "horizontal": each slide moves from left to right
 			//  "vertical": each slide moves from top to bottom
-			animation: 'horizontal',
+			animation: 'fade',
 
 			//  If you don't want to use a list to display your slides,
 			//  you can change it here. Not recommended and you'll need
