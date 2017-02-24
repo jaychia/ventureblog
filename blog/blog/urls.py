@@ -68,7 +68,7 @@ urlpatterns += [
     # page tree in the admin if it was installed.
     # NOTE: Don't forget to import the view function too!
 
-    url("^$", mezzanine.blog.views.blog_post_list, name="home"),
+    url("^$", blog_views.blog_post_list, name="home"),
 
     #OWN_URLS
     url("banner", blog_views.scrolling_banner, name="scrolling_banner"),
