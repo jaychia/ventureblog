@@ -1,9 +1,4 @@
-jQuery(document).ready(function($){
-	console.log('here');
-});
-
 $(function(){
-	console.log('running');
 	var didScroll;
 	var lastScrollTop = 0;
 	var delta = 5;

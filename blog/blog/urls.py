@@ -70,6 +70,8 @@ urlpatterns += [
 
     #OWN_URLS
     url("banner", blog_views.scrolling_banner, name="scrolling_banner"),
+    url(r"rating/like/(?P<id>.*)", blog_views.like, name="ratinglike"),
+    url(r"rating/dislike/(?P<id>.*)", blog_views.dislike, name="ratingdislike"),
 
     # MEZZANINE'S URLS
     # ----------------
