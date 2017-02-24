@@ -79,8 +79,12 @@ celerybeat-schedule
 .env
 
 # virtualenv
-venv/
+venv/*
 ENV/
+venv
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
 
 # Spyder project settings
 .spyderproject
