@@ -1,7 +1,7 @@
-.unslider {
-    overflow: auto;
+/*.unslider {
     margin: 0px;
     padding: 0px;
+    height: 100%;
 }
 .unslider-horizontal {
 
@@ -40,20 +40,43 @@
     padding: 0;
     border: none
 }
-.unslider-arrow {
+
+.banner {
+    box-shadow: 0 4px 8px 0 rgba(20, 20, 20, 0.04), 0 6px 20px 0 rgba(20, 20, 20, 0.04);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(20,20,20,0.04);
+    margin-bottom: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+
+/**
+ *   Here's where everything gets included. You don't need
+ *   to change anything here, and doing so might break
+ *   stuff. Here be dragons and all that.
+ */
+/**
+ *   Default variables
+ *
+ *   While these can be set with JavaScript, it's probably
+ *   better and faster to just set them here, compile to
+ *   CSS and include that instead to use some of that
+ *   hardware-accelerated goodness.
+ */
+ .unslider-arrow {
     position: absolute;
-    margin-top: 9%;
+    margin-top: 40vh;
     left: 20px;
     z-index: 15;
     cursor: pointer;
-    border-radius: 50%;
-    background: white;
-    opacity: 0.2;
+    color: white;
+    background-color: rgba(0,0,0,0);
     border-width: 0;
     width:30px;
     height:30px;
     font-weight:bolder;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .unslider-arrow:hover {
     opacity: 0.3;
@@ -65,32 +88,99 @@
     left: auto;
     right: 20px
 }
-.unslider-innerdiv {
-    height:230px;
-    width:100%;
-    background-size: 100%;
-    position:absolute;
-}
-.banner {
-    box-shadow: 0 4px 8px 0 rgba(20, 20, 20, 0.04), 0 6px 20px 0 rgba(20, 20, 20, 0.04);
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgba(20,20,20,0.04);
-    margin-bottom: 20px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
-.li-banner {
-    position:relative;
-    vertical-align:top;
-}
-.banner-title{
+ .banner-title{
     text-shadow: 2px 2px rgba(20, 20, 20, 0.3);
     margin-left: 10%;
+    margin-top: 20vh;
     color: rgba(256, 256, 256, 0.95);
 }
 .banner-subtitle{
     text-shadow: 2px 2px rgba(20, 20, 20, 0.1);
     margin-left: 10%;
     color: rgba(256, 256, 256, 0.95);
+}
+ .li-banner {
+    position:relative;
+    vertical-align:top;
+    width: 100%;
+    height: 100vh;
+}
+ .unslider-innerdiv {
+    height: 100vh;
+    width:100%;
+    background-size: 100%;
+    position:absolute;
+}
+.unslider {
+  overflow: auto;
+  margin: 0;
+  margin-bottom: 7vh;
+  padding: 0;
+  height: 100vh;
+  width:100%;
+  box-shadow: 0 2px 4px 0 rgba(20, 20, 20, 0.04);
+}
+.unslider-wrap {
+  position: relative;
+}
+.unslider-wrap.unslider-carousel > li {
+  float: left;
+}
+.unslider-vertical > ul {
+  height: 100%;
+}
+.unslider-vertical li {
+  float: none;
+  width: 100%;
+}
+.unslider-fade {
+  position: relative;
+}
+.unslider-fade .unslider-wrap li {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 8;
+}
+.unslider-fade .unslider-wrap li.unslider-active {
+  z-index: 10;
+}
+.unslider ul, .unslider ol, .unslider li {
+  list-style: none;
+  /* Reset any weird spacing */
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+/*.unslider-arrow {
+  position: absolute;
+  left: 20px;
+  z-index: 2;
+  cursor: pointer;
+}
+.unslider-arrow.next {
+  left: auto;
+  right: 20px;
+}*/
+
+.unslider-nav ol {
+  list-style: none;
+  text-align: center;
+}
+.unslider-nav ol li {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 4px;
+  background: transparent;
+  border-radius: 5px;
+  overflow: hidden;
+  text-indent: -999em;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+.unslider-nav ol li.unslider-active {
+  background: #fff;
+  cursor: default;
 }

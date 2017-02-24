@@ -90,10 +90,6 @@
 {% endif %}
 {% endnevercache %}
 
-{% block before_content %}
-    <div style="height:80px; width:100%;"></div>
-{% endblock %}
-
 <!-- Don't want the title either>
 <!-- <h1>{% block title %}{% endblock %}</h1>>
 
@@ -104,6 +100,10 @@
 {% endspaceless %}
 </ul> -->
 </div>
+
+{% block before_content %}
+    <div style="height:80px; width:100%;"></div>
+{% endblock %}
 
 <div class="container">
 <div class="row">
