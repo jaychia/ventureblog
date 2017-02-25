@@ -10,7 +10,7 @@ $(function() {
                 if (data.status == 200) {
                     var newcount = parseInt($.trim(likecount.text()));
                     likecount.text(++newcount);
-                    likebutton.prop('disabled', true);
+                    likebutton.prop('value', "&#xf08a;");
                 }
             },
         });

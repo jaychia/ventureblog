@@ -34,29 +34,54 @@
     left: auto;
     right: 20px
 }
+.banner-text-div {
+  /* Put this on top of the blurred layer */
+  position: relative;
+  z-index: 100;
+  padding: 20px;
+  background: rgb(34,34,34); /* for IE */
+  background: rgba(34,34,34,0.75);
+}
+.banner-text-container {
+  position: relative;
+  overflow: hidden;
+  vertical-align:center;
+}
+@media (max-device-width: 800px) {
+.banner-text-container {
+  margin-top: 8vh;
+}
+}
  .banner-title{
-    text-shadow: 2px 2px rgba(20, 20, 20, 0.3);
-    margin-left: 10%;
-    margin-top: 20vh;
+    text-shadow: 2px 2px rgba(20, 20, 20, 0.1);
+    margin-left: 5%;
+    /*margin-top: 20vh;*/
     color: rgba(256, 256, 256, 0.95);
 }
+.banner-cta {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: #485665;
+  border-radius: 2px;
+}
 .banner-subtitle{
-    text-shadow: 2px 2px rgba(20, 20, 20, 0.1);
-    margin-left: 10%;
+    margin-left: 5%;
+    margin-right:10%;
     color: rgba(256, 256, 256, 0.95);
 }
  .li-banner {
     position:relative;
-    vertical-align:top;
+    background-position: center top;
+    vertical-align:center;
     width: 100%;
     height: 100vh;
 }
  .unslider-innerdiv {
-    height: 100vh;
+    min-height: 100vh;
     width:100%;
     background-size: cover;
     position:absolute;
-    background-repeat: no-repeat;
+    padding: 20vh 5vw;
 }
 .unslider {
   overflow: auto;
@@ -65,7 +90,6 @@
   padding: 0;
   height: 100vh;
   width:100%;
-  box-shadow: 0 2px 4px 0 rgba(20, 20, 20, 0.04);
 }
 /*@media (max-device-width: 800px) {
    .unslider-innerdiv {

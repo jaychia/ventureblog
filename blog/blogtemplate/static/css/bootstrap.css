@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+@import url("https://fonts.googleapis.com/css?family=Hind:400,700");
+@import url("https://fonts.googleapis.com/css?family=CrimsonText:400,700");
 /*!
  * bootswatch v3.3.7
  * Homepage: http://bootswatch.com
@@ -1087,7 +1088,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: 'Hind', "Arial", Times, sans-serif;
   font-size: 16px;
   line-height: 1.42857143;
   color: #424B54;
@@ -1187,8 +1188,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
   line-height: 1.1;
   color: inherit;
 }
@@ -1292,6 +1293,15 @@ h6,
 }
 p {
   margin: 0 0 11px;
+  font-family: "Georgia", "Times New Roman", serif;
+  line-height: 2;
+  text-align: justify;
+  font-size: 19px;
+  font-weight: lighter;
+  color: #202030;
+}
+p a {
+  text-decoration: underline;
 }
 .lead {
   margin-bottom: 22px;
@@ -4169,7 +4179,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 65px;
+  min-height: 50px;
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
@@ -4276,10 +4286,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 21.5px 15px;
+  padding: 10px 5px;
   font-size: 20px;
   line-height: 22px;
-  height: 65px;
+  height: 50px;
+  margin-top: 3px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4299,8 +4310,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: right;
   margin-right: 15px;
   padding: 9px 10px;
-  margin-top: 15.5px;
-  margin-bottom: 15.5px;
+  margin-top: 7.5px;
+  margin-bottom: 2.5px;
   background-color: transparent;
   background-image: none;
   border: 1px solid transparent;
@@ -6754,7 +6765,7 @@ button.close {
   }
 }
 .navbar {
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .navbar-nav,
 .navbar-form {
@@ -6781,8 +6792,8 @@ button.close {
   color: #333333;
 }
 .navbar-brand {
-  padding-top: 12.5px;
-  padding-bottom: 12.5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   line-height: 1.9;
 }
 @media (min-width: 768px) {
@@ -6796,13 +6807,13 @@ button.close {
   }
 }
 .btn {
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 legend {
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .input-group-addon {
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .nav .open > a,
 .nav .open > a:hover,
@@ -6810,14 +6821,14 @@ legend {
   border: 1px solid #ddd;
 }
 .pagination {
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .pagination-lg > li > a,
 .pagination-lg > li > span {
   padding: 14px 24px;
 }
 .pager {
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .pager a {
   color: #333333;
@@ -6845,7 +6856,7 @@ legend {
   text-decoration: underline;
 }
 .label {
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
 .label-default {
@@ -6855,7 +6866,7 @@ legend {
 .badge {
   padding: 1px 7px 5px;
   vertical-align: 2px;
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
 .panel {

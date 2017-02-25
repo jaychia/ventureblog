@@ -2,10 +2,15 @@
 
 {% for post in posts %}
 	<li class="li-banner">
-		<div class="unslider-innerdiv" style="background-image:url({{ MEDIA_URL }}{{ post.featured_image }});">
+		<div class="unslider-innerdiv" style="background:url({{ MEDIA_URL }}{{ post.featured_image }}); background-size: cover;">
+			<div class="banner-text-container">
+			<div class ="banner-text-div">
 			<div class="banner-title"> <h1>{{ post.title }}</h1> </div>
-			<div class="banner-subtitle"><h5> {{ post.description }} <h5></div>
+			<div class="banner-subtitle"><h4> {{ post.description }} <h4></div>
+			<div class="banner-subtitle"><button class="banner-cta btn"><a href="{{ post.get_absolute_url }}" style="color: #ffffff; font-size:12px;">Read More</a></button></div>
 		</div>
+		</div>
+	</div>
 	</li>
 {% endfor %}
 

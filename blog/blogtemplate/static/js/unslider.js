@@ -36,7 +36,7 @@
 
 			//  3 second delay between slides moving, pass
 			//  as a number in milliseconds.
-			delay: 3000,
+			delay: 9000,
 
 			//  Animation speed in millseconds
 			speed: 750,
