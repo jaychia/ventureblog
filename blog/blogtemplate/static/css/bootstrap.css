@@ -4286,11 +4286,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 10px 5px;
+  padding: 0px 8px;
   font-size: 20px;
   line-height: 22px;
   height: 50px;
-  margin-top: 3px;
+  margin-left: 5vw;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4311,7 +4311,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-right: 15px;
   padding: 9px 10px;
   margin-top: 7.5px;
-  margin-bottom: 2.5px;
   background-color: transparent;
   background-image: none;
   border: 1px solid transparent;
@@ -6792,8 +6791,8 @@ button.close {
   color: #333333;
 }
 .navbar-brand {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 15px;
   line-height: 1.9;
 }
 @media (min-width: 768px) {

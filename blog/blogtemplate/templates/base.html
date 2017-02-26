@@ -52,7 +52,6 @@
 <body id="{% block body_id %}body{% endblock %}">
 
 <div id="js-navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
-<div class="container">
 <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">{% trans "Toggle Navigation" %}</span>
@@ -61,7 +60,7 @@
         <span class="icon-bar"></span>
     </button>
     {% block navbar_title %}
-    {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+    {% if settings.SITE_TITLE %}<a href="/"><img class="navbar-brand" src="{% static 'img/VentureFrontierLogo.svg' %}"></a>{% endif %}
     {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
     {% endblock%}
 </div>
@@ -71,7 +70,6 @@
     {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
     {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
 </div> -->
-</div>
 </div>
 
 {% block bigpic %}{% endblock %}
