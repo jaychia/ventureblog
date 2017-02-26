@@ -16,7 +16,7 @@
 {% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}
 {% endblock %}
 {% block bigpic %}
-<div style="height:60px; width:100%;"></div>
+<div style="height:50px; width:100%;"></div>
 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
 <div class="bigpic" style="background-image:url({{ MEDIA_URL }}{{ blog_post.featured_image }}); ">
     {% block blog_post_detail_postedby %}
