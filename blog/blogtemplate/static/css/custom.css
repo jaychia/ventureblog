@@ -111,6 +111,12 @@ color: #000000;
 	color: green;
 	font-size: 20px;
 }
+.heart-liked {
+	font-family: FontAwesome;
+	background-color: rgba(0,0,0,0);
+	border-width: 0;
+	font-size: 20px;
+}
 .heart-submit:hover {
 	text-shadow: 1px 1px 1.5px rgba(100, 100, 100, 0.5);
 }

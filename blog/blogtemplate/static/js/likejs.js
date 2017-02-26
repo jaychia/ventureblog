@@ -2,6 +2,8 @@ $(function() {
     console.log('running');
     likebutton = $("#likebutton");
     likecount = $("#likecount");
+    liked = $("#liked");
+    liked.hide();  
     likebutton.click(function(e) {
         e.preventDefault();
         $.ajax({
@@ -10,7 +12,8 @@ $(function() {
                 if (data.status == 200) {
                     var newcount = parseInt($.trim(likecount.text()));
                     likecount.text(++newcount);
-                    likebutton.prop('value', "&#xf08a;");
+                    likebutton.hide();
+                    liked.show();
                 }
             },
         });

@@ -30,9 +30,10 @@
     {% endnevercache %}
     <input type="hidden" id="id_value_0" name="value" type="radio" value="1" checked>
     <input id="likebutton" type="submit" class="heart-submit" value="&#xf004;" onclick="return 1;" data-url="{% url "ratinglike" blog_post.id %}">
+    <span class="heart-liked" id="liked">&#xf08a;</span>
 </form>
 {% else %}
-<i class="fa fa-heart-o"></i>
+<span class="heart-liked">&#xf08a;</span>
 {% endif %}
 
 <span id="likecount">
