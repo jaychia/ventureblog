@@ -6792,7 +6792,7 @@ button.close {
 }
 .navbar-brand {
   padding-top: 10px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   line-height: 1.9;
 }
 @media (min-width: 768px) {
