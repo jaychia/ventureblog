@@ -4,6 +4,11 @@ from django.db import models
 from mezzanine.utils.models import get_user_model_name
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.utils.translation import ugettext, ugettext_lazy as _
+from mezzanine.blog.models import BlogPost
+
+BlogPost._meta.get_field('featured_image').help_text = "Upload an image \
+        with size 1200 x 600 or higher resolution, but with a 2:1 width:height ratio for \
+        best effect"
 
 # Create your models here.
 # class Like(models.Model):

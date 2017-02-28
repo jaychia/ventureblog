@@ -75,6 +75,7 @@ urlpatterns += [
     url(r"rating/like/(?P<id>.*)", blog_views.like, name="ratinglike"),
     url(r"rating/dislike/(?P<id>.*)", blog_views.dislike, name="ratingdislike"),
 
+
     url("^tag/(?P<tag>.*)%s$" % _slash,
         blog_views.blog_post_list, name="blog_post_list_tag"),
     url("^category/(?P<category>.*)%s$" % _slash,
