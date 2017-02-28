@@ -2,7 +2,7 @@
 
 {% for post in posts %}
 	<li class="li-banner">
-		<div class="unslider-innerdiv" style="background:url({{ MEDIA_URL }}{{ post.featured_image }}); background-size: cover; float:none;">
+		<div class="unslider-innerdiv slowScroll" style="background:url({{ MEDIA_URL }}{{ post.featured_image }}); background-size: cover; float:none;">
 			<div class="banner-text-container">
 			<div class ="banner-text-div">
 			<div class="banner-title"> <h1>{{ post.title }}</h1> </div>

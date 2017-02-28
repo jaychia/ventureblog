@@ -18,7 +18,7 @@
 {% block bigpic %}
 <div style="height:50px; width:100%;"></div>
 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-<div class="bigpic" style="background-image:url({{ MEDIA_URL }}{{ blog_post.featured_image }}); ">
+<div class="bigpic slowScroll" style="background-image:url({{ MEDIA_URL }}{{ blog_post.featured_image }}); ">
     {% block blog_post_detail_postedby %}
     {% editable blog_post.publish_date %}
     <h6 class="post-meta authordetails">
