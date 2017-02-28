@@ -52,23 +52,47 @@
     margin-right:10%;
     color: rgba(256, 256, 256, 0.95);
 }
+
+.banner-title{
+    text-shadow: 2px 2px rgba(20, 20, 20, 0.1);
+    margin: 2% 1% 2% 5%;
+    color: rgba(256, 256, 256, 0.95);
+    font-size: 41px;
+    font-family: "Hind", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+}
+.banner-cta {
+  transition: background-color 0.25s ease;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: rgba(0,0,0,0);
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: #ffffff;
+}
 @media all and (max-width: 800px) {
 .banner-subtitle {
   display: none;
 }
+.banner-title {
+  font-size: 5.5vh;
+  margin-left: 30px;
+  margin-right: 30px;
 }
-
- .banner-title{
-    text-shadow: 2px 2px rgba(20, 20, 20, 0.1);
-    margin-left: 5%;
-    /*margin-top: 20vh;*/
-    color: rgba(256, 256, 256, 0.95);
+.banner-text-div {
+  height: 43vh;
 }
 .banner-cta {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  background-color: #485665;
-  border-radius: 2px;
+  position: absolute;
+  left:    50px;
+  bottom:   20px;
+  margin: none;
+}
+}
+.banner-cta:hover {
+  background-color: rgba(0,0,0,0.95);
 }
 .banner-subtitle-cta{
     margin-left: 5%;
