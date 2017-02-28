@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Jura");
 * {
     margin-top: 0;
     margin-bottom: 0;
@@ -72,11 +73,19 @@ margin-left: 0;
 margin-right: 0;
 color: #000000;
 }
-
+.brand-container {
+	display: table-cell;
+  	vertical-align: bottom;
+}
 .navbar-default {
 	transition: top 0.2s ease-in-out;
 }
-.navbar {
+.navbar-brand-text {
+	display: inline-block;
+	font-family: 'Jura', 'Arial', sans-serif;
+	font-size: 25px;
+	font-weight: thin;
+	margin-top: 27px;
 }
 .nav-up {
   top: -80px;
@@ -88,6 +97,7 @@ color: #000000;
 	float:right;
 	margin-top: 2%;
 	margin-right: 10%;
+	font-weight: bold;
 }
 .v-center {
 	vertical-align:middle;
