@@ -72,7 +72,7 @@
   border-width: 1px;
   border-color: #ffffff;
 }
-@media all and (max-width: 800px) {
+@media all and (max-width: 400px) {
 .banner-subtitle {
   display: none;
 }
