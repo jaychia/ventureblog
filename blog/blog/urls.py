@@ -1,15 +1,19 @@
 from __future__ import unicode_literals
+from future.builtins import str
 
 from django.conf.urls import include, url
+from django.contrib.sitemaps.views import sitemap
+from django.views.i18n import javascript_catalog
+from django.http import HttpResponse
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.views.i18n import set_language
 
 from mezzanine.core.views import direct_to_template
 from mezzanine.conf import settings
-import mezzanine.blog.views
+from mezzanine.core.sitemaps import DisplayableSitemap
+from mezzanine.blog import views
 import blogtemplate.views as blog_views
-
 
 admin.autodiscover()
 
@@ -75,28 +79,6 @@ urlpatterns += [
     url(r"rating/like/(?P<id>.*)", blog_views.like, name="ratinglike"),
     url(r"rating/dislike/(?P<id>.*)", blog_views.dislike, name="ratingdislike"),
 
-
-    url("^tag/(?P<tag>.*)%s$" % _slash,
-        blog_views.blog_post_list, name="blog_post_list_tag"),
-    url("^category/(?P<category>.*)%s$" % _slash,
-        blog_views.blog_post_list, name="blog_post_list_category"),
-    url("^author/(?P<username>.*)%s$" % _slash,
-        blog_views.blog_post_list, name="blog_post_list_author"),
-    url("^archive/(?P<year>\d{4})/(?P<month>\d{1,2})%s$" % _slash,
-        blog_views.blog_post_list, name="blog_post_list_month"),
-    url("^archive/(?P<year>\d{4})%s$" % _slash,
-        blog_views.blog_post_list, name="blog_post_list_year"),
-    url("^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/"
-        "(?P<slug>.*)%s$" % _slash,
-        blog_views.blog_post_detail, name="blog_post_detail_day"),
-    url("^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<slug>.*)%s$" % _slash,
-        blog_views.blog_post_detail, name="blog_post_detail_month"),
-    url("^(?P<year>\d{4})/(?P<slug>.*)%s$" % _slash,
-        blog_views.blog_post_detail, name="blog_post_detail_year"),
-    url("^(?P<slug>.*)%s$" % _slash,
-        blog_views.blog_post_detail, name="blog_post_detail"),
-    url("^$", blog_views.blog_post_list, name="blog_post_list"),
-
     # MEZZANINE'S URLS
     # ----------------
     # ADD YOUR OWN URLPATTERNS *ABOVE* THE LINE BELOW.
@@ -108,7 +90,7 @@ urlpatterns += [
     # ``mezzanine.urls``, go right ahead and take the parts you want
     # from it, and use them directly below instead of using
     # ``mezzanine.urls``.
-    url(r"^", include("mezzanine.urls")),
+    # url(r"^", include("mezzanine.urls")),
 
     # MOUNTING MEZZANINE UNDER A PREFIX
     # ---------------------------------
@@ -127,6 +109,111 @@ urlpatterns += [
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
 
 ]
+
+#Pulled from mezzanine urls for granular control:
+
+# JavaScript localization feature
+js_info_dict = {'domain': 'django'}
+urlpatterns += [
+    url(r'^jsi18n/(?P<packages>\S+?)/$', javascript_catalog, js_info_dict),
+]
+
+if settings.DEBUG and "debug_toolbar" in settings.INSTALLED_APPS:
+    try:
+        import debug_toolbar
+    except ImportError:
+        pass
+    else:
+        urlpatterns += [
+            url(r'^__debug__/', include(debug_toolbar.urls)),
+        ]
+
+# Django's sitemap app.
+if "django.contrib.sitemaps" in settings.INSTALLED_APPS:
+    sitemaps = {"sitemaps": {"all": DisplayableSitemap}}
+    urlpatterns += [
+        url("^sitemap\.xml$", sitemap, sitemaps),
+    ]
+
+# Return a robots.txt that disallows all spiders when DEBUG is True.
+if getattr(settings, "DEBUG", False):
+    urlpatterns += [
+        url("^robots.txt$",
+            lambda r: HttpResponse("User-agent: *\nDisallow: /",
+                                   content_type="text/plain")),
+    ]
+
+# Miscellanous Mezzanine patterns.
+urlpatterns += [
+    url("^", include("mezzanine.core.urls")),
+    url("^", include("mezzanine.generic.urls")),
+]
+
+# Mezzanine's Accounts app
+if "mezzanine.accounts" in settings.INSTALLED_APPS:
+    # We don't define a URL prefix here such as /account/ since we want
+    # to honour the LOGIN_* settings, which Django has prefixed with
+    # /account/ by default. So those settings are used in accounts.urls
+    urlpatterns += [
+        url("^", include("mezzanine.accounts.urls")),
+    ]
+
+# Mezzanine's Blog app - edited to redirect to our own view funcs
+blog_installed = "mezzanine.blog" in settings.INSTALLED_APPS
+if blog_installed:
+    BLOG_SLUG = settings.BLOG_SLUG.rstrip("/")
+    if BLOG_SLUG:
+        BLOG_SLUG += "/"
+blog_patterns = [
+    url("^feeds/(?P<format>.*)%s$" % _slash,
+        views.blog_post_feed, name="blog_post_feed"),
+    url("^tag/(?P<tag>.*)/feeds/(?P<format>.*)%s$" % _slash,
+        views.blog_post_feed, name="blog_post_feed_tag"),
+    url("^tag/(?P<tag>.*)%s$" % _slash,
+        blog_views.blog_post_list, name="blog_post_list_tag"),
+    url("^category/(?P<category>.*)/feeds/(?P<format>.*)%s$" % _slash,
+        views.blog_post_feed, name="blog_post_feed_category"),
+    url("^category/(?P<category>.*)%s$" % _slash,
+        blog_views.blog_post_list, name="blog_post_list_category"),
+    url("^author/(?P<username>.*)/feeds/(?P<format>.*)%s$" % _slash,
+        views.blog_post_feed, name="blog_post_feed_author"),
+    url("^author/(?P<username>.*)%s$" % _slash,
+        blog_views.blog_post_list, name="blog_post_list_author"),
+    url("^archive/(?P<year>\d{4})/(?P<month>\d{1,2})%s$" % _slash,
+        blog_views.blog_post_list, name="blog_post_list_month"),
+    url("^archive/(?P<year>\d{4})%s$" % _slash,
+        blog_views.blog_post_list, name="blog_post_list_year"),
+    url("^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/"
+        "(?P<slug>.*)%s$" % _slash,
+        blog_views.blog_post_detail, name="blog_post_detail_day"),
+    url("^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<slug>.*)%s$" % _slash,
+        blog_views.blog_post_detail, name="blog_post_detail_month"),
+    url("^(?P<year>\d{4})/(?P<slug>.*)%s$" % _slash,
+        blog_views.blog_post_detail, name="blog_post_detail_year"),
+    url("^(?P<slug>.*)%s$" % _slash,
+        blog_views.blog_post_detail, name="blog_post_detail"),
+    url("^$", blog_views.blog_post_list, name="blog_post_list"),
+]
+urlpatterns += blog_patterns
+
+
+# Mezzanine's Pages app.
+PAGES_SLUG = ""
+if "mezzanine.pages" in settings.INSTALLED_APPS:
+    # No BLOG_SLUG means catch-all patterns belong to the blog,
+    # so give pages their own prefix and inject them before the
+    # blog urlpatterns.
+    if blog_installed and not BLOG_SLUG.rstrip("/"):
+        PAGES_SLUG = getattr(settings, "PAGES_SLUG", "pages").strip("/") + "/"
+        blog_patterns_start = urlpatterns.index(blog_patterns[0])
+        urlpatterns[blog_patterns_start:len(blog_patterns)] = [
+            url("^%s" % str(PAGES_SLUG), include("mezzanine.pages.urls")),
+        ]
+        urlpatterns += blog_patterns
+    else:
+        urlpatterns += [
+            url("^", include("mezzanine.pages.urls")),
+        ]
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
 # pages can use JS, CSS and images.
